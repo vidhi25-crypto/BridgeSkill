@@ -1,0 +1,326 @@
+{
+  "python": {
+    "skill": "Python",
+    "improve": "SQL, OOP, Git/GitHub, APIs, DSA, Flask/Django",
+    "practice": "Build automation tools, APIs, calculators, web apps, data projects.",
+    "job": "Create 3–5 projects, upload them to GitHub, build a portfolio, practice Python interview questions, apply for internships/junior roles."
+  },
+  "java": {
+    "skill": "Java",
+    "improve": "OOP, SQL, Spring Boot, Git, DSA",
+    "practice": "Build CRUD applications, REST APIs and small backend projects.",
+    "job": "Create 2–4 Java projects and prepare common Java/OOP/SQL interview questions."
+  },
+  "javascript": {
+    "skill": "JavaScript",
+    "improve": "DOM, APIs, async JavaScript, Git, React",
+    "practice": "Build calculators, to-do apps, weather apps and interactive websites.",
+    "job": "Deploy projects online and show live demos in your portfolio."
+  },
+  "c / c++": {
+    "skill": "C / C++",
+    "improve": "DSA, pointers, OOP, memory management, Git",
+    "practice": "Implement arrays, linked lists, stacks, queues and sorting algorithms.",
+    "job": "Build strong programming fundamentals and practice coding problems regularly."
+  },
+  "html & css": {
+    "skill": "HTML & CSS",
+    "improve": "JavaScript, responsive design, accessibility, UI/UX basics",
+    "practice": "Build landing pages, portfolios and responsive websites.",
+    "job": "Have 3–5 deployed websites and put the live links on your resume."
+  },
+  "react.js": {
+    "skill": "React.js",
+    "improve": "JavaScript, APIs, state management, routing, Git",
+    "practice": "Build dashboards, e-commerce interfaces and API-based applications.",
+    "job": "Create 2–3 polished React projects and deploy them."
+  },
+  "node.js": {
+    "skill": "Node.js",
+    "improve": "Express.js, REST APIs, databases, authentication, Git",
+    "practice": "Build backend APIs and full-stack applications.",
+    "job": "Build at least one complete full-stack project."
+  },
+  "sql": {
+    "skill": "SQL",
+    "improve": "Joins, subqueries, indexes, normalization, database design",
+    "practice": "Solve SQL queries and build databases for projects.",
+    "job": "Practice SQL interview questions and combine SQL with Python/data skills."
+  },
+  "git & github": {
+    "skill": "Git & GitHub",
+    "improve": "Branching, merging, pull requests, issues, Git workflows",
+    "practice": "Put every serious project on GitHub.",
+    "job": "Keep repositories organized with README files, screenshots and project descriptions."
+  },
+  "data structures & algorithms": {
+    "skill": "Data Structures & Algorithms",
+    "improve": "Arrays, linked lists, stacks, queues, trees, graphs, recursion",
+    "practice": "Solve coding problems consistently.",
+    "job": "Focus on understanding patterns rather than memorizing solutions."
+  },
+  "ai & machine learning": {
+    "skill": "AI & Machine Learning",
+    "improve": "Python, statistics, NumPy, Pandas, scikit-learn, deep learning",
+    "practice": "Build prediction, classification and recommendation projects.",
+    "job": "Build a small ML portfolio and explain your projects clearly."
+  },
+  "data science": {
+    "skill": "Data Science",
+    "improve": "Python, SQL, statistics, Pandas, visualization, machine learning",
+    "practice": "Analyze real datasets and create dashboards/reports.",
+    "job": "Create 3–4 data projects showing the complete process from data cleaning to insights."
+  },
+  "cybersecurity": {
+    "skill": "Cybersecurity",
+    "improve": "Networking, Linux, Python, security fundamentals, ethical hacking concepts",
+    "practice": "Use legal cybersecurity labs and capture-the-flag environments.",
+    "job": "Build security knowledge, document lab projects and consider relevant certifications."
+  },
+  "cloud computing": {
+    "skill": "Cloud Computing",
+    "improve": "Linux, networking, Docker, one major cloud platform, security basics",
+    "practice": "Deploy applications and experiment with cloud services.",
+    "job": "Build cloud projects and document architecture and deployment steps."
+  },
+  "devops": {
+    "skill": "DevOps",
+    "improve": "Linux, Git, Docker, CI/CD, cloud, Kubernetes",
+    "practice": "Create automated build/deployment pipelines.",
+    "job": "Build one complete CI/CD project and document it on GitHub."
+  },
+  "graphic design": {
+    "skill": "Graphic Design",
+    "improve": "Photoshop, Illustrator, branding, typography",
+    "practice": "Create logos, posters and social-media designs.",
+    "job": "Build a niche portfolio instead of showing random designs."
+  },
+  "ui/ux design": {
+    "skill": "UI/UX Design",
+    "improve": "Figma, UX research, prototyping, design systems",
+    "practice": "Create complete app/website case studies.",
+    "job": "Show your design process and reasoning, not just screenshots."
+  },
+  "photography": {
+    "skill": "Photography",
+    "improve": "Editing, lighting, composition, videography",
+    "practice": "Build themed photography projects.",
+    "job": "Create a portfolio and approach local businesses, events and creators."
+  },
+  "videography": {
+    "skill": "Videography",
+    "improve": "Camera techniques, lighting, audio, storytelling, video editing",
+    "practice": "Shoot short films, reels, product videos and interviews.",
+    "job": "Create a short showreel containing your strongest work."
+  },
+  "video editing": {
+    "skill": "Video Editing",
+    "improve": "Premiere Pro, After Effects, storytelling, sound design",
+    "practice": "Create reels, YouTube edits and advertisements.",
+    "job": "Create a showreel and approach creators/businesses with relevant samples."
+  },
+  "photo editing": {
+    "skill": "Photo Editing",
+    "improve": "Photoshop, Lightroom, retouching, color correction",
+    "practice": "Edit portraits, products and landscapes.",
+    "job": "Show before/after work in your portfolio."
+  },
+  "motion graphics": {
+    "skill": "Motion Graphics",
+    "improve": "After Effects, typography animation, compositing, storytelling",
+    "practice": "Create logo animations, advertisements and social-media animations.",
+    "job": "Build a 30–60 second motion-design reel."
+  },
+  "3d modeling": {
+    "skill": "3D Modeling",
+    "improve": "Blender, texturing, lighting, rendering, animation",
+    "practice": "Model everyday objects, rooms and simple characters.",
+    "job": "Create a portfolio around one area such as product, environment or character modeling."
+  },
+  "animation": {
+    "skill": "Animation",
+    "improve": "Storyboarding, timing, character design, motion principles",
+    "practice": "Create short animations and motion exercises.",
+    "job": "Build a demo reel showing your strongest animations."
+  },
+  "photoshop": {
+    "skill": "Photoshop",
+    "improve": "Retouching, compositing, typography, color correction",
+    "practice": "Posters, thumbnails, photo manipulation and advertisements.",
+    "job": "Show practical commercial-style designs in your portfolio."
+  },
+  "illustrator": {
+    "skill": "Illustrator",
+    "improve": "Vector illustration, logos, typography, branding",
+    "practice": "Create logos, icons, illustrations and brand assets.",
+    "job": "Build a branding/illustration portfolio."
+  },
+  "premiere pro": {
+    "skill": "Premiere Pro",
+    "improve": "Color correction, audio editing, transitions, storytelling",
+    "practice": "Edit reels, YouTube videos and promotional videos.",
+    "job": "Create a showreel and several complete sample projects."
+  },
+  "after effects": {
+    "skill": "After Effects",
+    "improve": "Motion graphics, compositing, VFX, expressions",
+    "practice": "Logo animations, titles, transitions and visual effects.",
+    "job": "Build a focused motion/VFX reel."
+  },
+  "canva": {
+    "skill": "Canva",
+    "improve": "Design principles, typography, branding, Photoshop/Illustrator",
+    "practice": "Social posts, presentations, thumbnails and marketing materials.",
+    "job": "Use Canva to create a consistent portfolio, but also learn professional design fundamentals."
+  },
+  "digital marketing": {
+    "skill": "Digital Marketing",
+    "improve": "SEO, social media, analytics, paid advertising",
+    "practice": "Build mock campaigns and analyze results.",
+    "job": "Create case studies and demonstrate measurable outcomes."
+  },
+  "social media marketing": {
+    "skill": "Social Media Marketing",
+    "improve": "Content strategy, analytics, copywriting, advertising",
+    "practice": "Manage a test account or create a content calendar.",
+    "job": "Show sample campaigns and measurable results where available."
+  },
+  "seo": {
+    "skill": "SEO",
+    "improve": "Keyword research, on-page SEO, technical SEO, analytics",
+    "practice": "Optimize a website or blog you control.",
+    "job": "Create an SEO case study showing what you changed and what happened."
+  },
+  "content creation": {
+    "skill": "Content Creation",
+    "improve": "Video editing, photography, storytelling, copywriting, social media",
+    "practice": "Publish consistently and experiment with different formats.",
+    "job": "Build a recognizable portfolio and track engagement/results."
+  },
+  "copywriting": {
+    "skill": "Copywriting",
+    "improve": "SEO, advertising, storytelling, sales psychology",
+    "practice": "Write landing pages, advertisements and emails.",
+    "job": "Create 5–10 strong samples across different industries."
+  },
+  "email marketing": {
+    "skill": "Email Marketing",
+    "improve": "Copywriting, segmentation, analytics, automation",
+    "practice": "Create sample email campaigns and sequences.",
+    "job": "Build case studies using test campaigns or legitimate projects."
+  },
+  "e-commerce": {
+    "skill": "E-commerce",
+    "improve": "Digital marketing, SEO, product research, analytics, customer service",
+    "practice": "Build a demo online store.",
+    "job": "Learn how product pages, conversion and customer acquisition work."
+  },
+  "sales": {
+    "skill": "Sales",
+    "improve": "Communication, negotiation, CRM, product knowledge",
+    "practice": "Role-play sales calls and presentations.",
+    "job": "Prepare examples showing communication, persuasion and results."
+  },
+  "branding": {
+    "skill": "Branding",
+    "improve": "Graphic design, marketing, consumer research, storytelling",
+    "practice": "Create complete fictional brand identities.",
+    "job": "Build case studies showing brand strategy + visual identity."
+  },
+  "market research": {
+    "skill": "Market Research",
+    "improve": "Data analysis, surveys, statistics, Excel/Sheets, presentation",
+    "practice": "Research a market and create a report.",
+    "job": "Build 2–3 research case studies."
+  },
+  "entrepreneurship": {
+    "skill": "Entrepreneurship",
+    "improve": "Marketing, sales, finance, communication, leadership",
+    "practice": "Build a small project/business idea and test it.",
+    "job": "Document what you built, what you learned and the results."
+  },
+  "communication": {
+    "skill": "Communication",
+    "improve": "Writing, speaking, listening, professional communication",
+    "practice": "Explain your projects aloud and practice conversations.",
+    "job": "Prepare a clear 30-second introduction about yourself."
+  },
+  "public speaking": {
+    "skill": "Public Speaking",
+    "improve": "Confidence, storytelling, presentation structure",
+    "practice": "Record yourself giving 2–5 minute presentations.",
+    "job": "Practice explaining your projects clearly."
+  },
+  "leadership": {
+    "skill": "Leadership",
+    "improve": "Delegation, decision-making, conflict management",
+    "practice": "Lead a college/project team.",
+    "job": "Keep examples of situations where you coordinated people or completed projects."
+  },
+  "teamwork": {
+    "skill": "Teamwork",
+    "improve": "Collaboration, communication, conflict resolution",
+    "practice": "Work on group projects and GitHub collaborations.",
+    "job": "Prepare examples of how you contributed to team projects."
+  },
+  "problem solving": {
+    "skill": "Problem Solving",
+    "improve": "Logical thinking, analysis, decision-making",
+    "practice": "Coding challenges, case studies and real-world problems.",
+    "job": "Practice explaining **how** you solved a problem, not just the final answer."
+  },
+  "critical thinking": {
+    "skill": "Critical Thinking",
+    "improve": "Research, analysis, questioning assumptions",
+    "practice": "Compare different solutions to the same problem.",
+    "job": "Use structured reasoning during interviews."
+  },
+  "time management": {
+    "skill": "Time Management",
+    "improve": "Planning, prioritization, consistency",
+    "practice": "Use weekly goals and project deadlines.",
+    "job": "Show that you can complete projects on schedule."
+  },
+  "negotiation": {
+    "skill": "Negotiation",
+    "improve": "Communication, persuasion, research",
+    "practice": "Role-play salary/client negotiations.",
+    "job": "Research market rates and prepare your reasoning before discussions."
+  },
+  "presentation skills": {
+    "skill": "Presentation Skills",
+    "improve": "Storytelling, slide design, speaking",
+    "practice": "Present your projects regularly.",
+    "job": "Add project presentations/case studies to your portfolio."
+  },
+  "networking": {
+    "skill": "Networking",
+    "improve": "Communication, personal branding, relationship building",
+    "practice": "Connect with professionals, attend events and participate in communities.",
+    "job": "Don't only ask people for jobs—build genuine professional relationships."
+  },
+  "web development": {
+    "skill": "Web Development",
+    "improve": "JavaScript, React, backend, databases, Git",
+    "practice": "Build websites for fictional businesses.",
+    "job": "Create 3–5 demos and contact small businesses/startups with a clear portfolio."
+  },
+  "social media management": {
+    "skill": "Social Media Management",
+    "improve": "Content creation, analytics, copywriting, design",
+    "practice": "Create sample content calendars and campaigns.",
+    "job": "Show businesses exactly what you could improve rather than sending only a generic message."
+  },
+  "virtual assistance": {
+    "skill": "Virtual Assistance",
+    "improve": "Excel/Sheets, email management, organization, communication",
+    "practice": "Create sample schedules, spreadsheets and administrative workflows.",
+    "job": "Demonstrate reliability, organization and specific services you can provide."
+  },
+  "wordpress development": {
+    "skill": "WordPress Development",
+    "improve": "HTML, CSS, JavaScript, SEO, hosting",
+    "practice": "Build business websites and blogs.",
+    "job": "Create several demo websites for different types of businesses."
+  }
+}

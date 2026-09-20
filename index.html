@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BridgeSkill | SIH26135</title>
+<style>
+:root{
+  --blue:#3b82f6;--blue2:#6366f1;--purple:#8b5cf6;--pink:#ec4899;--pink2:#f472b6;--navy:#111827;--text:#1e293b;
+  --muted:#64748b;--bg:#f7f5ff;--card:#fff;--border:#e5e7eb;
+  --green:#16a34a;--orange:#d97706;--red:#dc2626;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.nav{height:74px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:50}
+.logo{font-size:21px;font-weight:850;color:var(--blue)}
+.logo span{color:var(--navy)}
+.navlinks{display:flex;align-items:center;gap:10px}
+.navlinks button{border:0;background:transparent;padding:10px 13px;color:#475569;font-weight:700;border-radius:8px}
+.navlinks button:hover{background:#eff6ff;color:var(--blue)}
+.btn{border:0;border-radius:10px;padding:11px 17px;font-weight:750;transition:.2s}
+.btn:hover{transform:translateY(-1px)}
+.primary{background:linear-gradient(135deg,var(--blue),var(--purple),var(--pink));color:white;box-shadow:0 8px 20px #2563eb2b}
+.outline{background:white;border:1px solid #cbd5e1;color:#334155}
+.dark{background:var(--navy);color:white}
+.hero{padding:92px 6% 80px;background:radial-gradient(circle at 15% 20%,#fce7f3 0,transparent 27%),radial-gradient(circle at 85% 10%,#dbeafe 0,transparent 30%),linear-gradient(135deg,#faf5ff,#fff)}
+.hero-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:7px;background:#dbeafe;color:#1d4ed8;padding:8px 13px;border-radius:30px;font-size:12px;font-weight:850;margin-bottom:18px}
+.hero h1{font-size:58px;line-height:1.06;color:var(--navy);margin-bottom:20px;letter-spacing:-1.5px}
+.hero h1 span{background:linear-gradient(90deg,var(--blue),var(--blue2));color:transparent;background-clip:text}
+.lead{font-size:18px;line-height:1.75;color:var(--muted);max-width:690px}
+.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.preview{background:rgba(255,255,255,.88);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 25px 70px #0f172a17}
+.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.live{font-size:12px;color:var(--green);font-weight:800}.dot{width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block;margin-right:5px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.stat{padding:19px;background:#f8fafc;border:1px solid #eef2f7;border-radius:14px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:5px;color:var(--navy)}
+.section{padding:78px 6%}.section.white{background:white}.section-title{text-align:center;max-width:730px;margin:0 auto 40px}.section-title h2{font-size:39px;color:var(--navy);margin-bottom:10px}.section-title p{color:var(--muted);line-height:1.6}
+.feature-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature{border:1px solid var(--border);border-radius:17px;padding:25px;background:white;transition:.25s;box-shadow:0 6px 20px #0f172a07}
+.feature:hover{transform:translateY(-6px);box-shadow:0 18px 35px #0f172a12}
+.iconbox{width:52px;height:52px;border-radius:14px;background:#eff6ff;display:grid;place-items:center;font-size:27px;margin-bottom:15px}
+.feature h3{margin-bottom:8px}.feature p{color:var(--muted);line-height:1.55;min-height:50px}.feature .btn{margin-top:17px;width:100%}
+footer{background:var(--navy);color:#cbd5e1;text-align:center;padding:30px}
+.dashboard{max-width:1280px;margin:auto;padding:38px 6% 80px}
+.dash-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:24px}
+.dash-head h2{font-size:33px;color:var(--navy)}.sub{color:var(--muted);font-size:14px;line-height:1.5}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.tab{border:1px solid var(--border);background:white;padding:10px 15px;border-radius:9px;font-weight:750;color:#475569}.tab.active{background:var(--blue);border-color:var(--blue);color:white}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:20px}.kpi{background:white;border:1px solid var(--border);border-radius:15px;padding:20px}.kpi small{color:var(--muted)}.kpi strong{display:block;color:var(--navy);font-size:28px;margin-top:5px}
+.panel{background:white;border:1px solid var(--border);border-radius:15px;padding:22px;margin-bottom:18px}.panel h3{color:var(--navy);margin-bottom:4px}.panel .sub{margin-bottom:17px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{margin-bottom:14px}.form-group label{display:block;font-size:13px;font-weight:800;margin-bottom:6px}.control{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;outline:none;background:white}.control:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb18}
+.skill-row{padding:14px 0;border-bottom:1px solid #edf2f7}.skill-row:last-child{border-bottom:0}.skill-line{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:7px;font-size:14px}.progress{height:9px;background:#e2e8f0;border-radius:20px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--blue),#7c3aed);border-radius:20px;transition:width .4s}
+.skill-actions{display:flex;gap:7px}.mini{padding:6px 9px;border-radius:7px;border:1px solid #cbd5e1;background:white;font-size:12px;font-weight:750}.mini.delete{color:var(--red);border-color:#fecaca;background:#fff7f7}
+.list{border-top:1px solid var(--border)}.list-item{padding:14px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:15px}.list-item small{display:block;color:var(--muted);margin-top:4px}
+.tag{padding:5px 9px;border-radius:20px;background:#dbeafe;color:#1d4ed8;font-size:12px;font-weight:800;white-space:nowrap}.success{background:#dcfce7;color:#15803d}.warning{background:#fef3c7;color:#a16207}
+.empty{text-align:center;color:var(--muted);padding:24px}.notice{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px;margin-bottom:17px;font-size:13px}
+.modal{position:fixed;inset:0;background:#0f172a99;display:flex;align-items:center;justify-content:center;padding:18px;z-index:100}
+.modal-card{width:min(560px,100%);max-height:90vh;overflow:auto;background:white;border-radius:18px;padding:27px;box-shadow:0 30px 80px #0004}
+.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.close{width:35px;height:35px;border:0;border-radius:50%;background:#f1f5f9;font-size:22px}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:white;padding:13px 18px;border-radius:10px;z-index:200;box-shadow:0 12px 35px #0003}
+.recommend{border:1px solid #dbeafe;background:#f8fbff;border-radius:12px;padding:15px;margin-top:15px}
+
+/* BridgeSkill pink-blue-purple login screen */
+.modal.login-screen{padding:0;background:linear-gradient(160deg,#5b21b6 0%,#7c3aed 35%,#ec4899 100%);overflow:hidden}
+.modal.login-screen:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,#fff 1px,transparent 1.5px);background-size:74px 74px;opacity:.45;animation:twinkle 7s linear infinite}
+.modal.login-screen:after{content:"";position:absolute;left:-5%;right:-5%;bottom:-3%;height:35%;background:linear-gradient(165deg,transparent 0 15%,#27105f 16% 100%);clip-path:polygon(0 60%,8% 40%,15% 57%,23% 25%,31% 52%,42% 18%,51% 48%,62% 28%,72% 55%,82% 20%,91% 47%,100% 30%,100% 100%,0 100%);opacity:.92}
+.login-wrap{position:relative;z-index:2;width:min(500px,92vw);padding:36px 42px 32px;border:1px solid rgba(255,255,255,.27);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.17),rgba(255,255,255,.08));box-shadow:0 30px 90px rgba(24,7,66,.35);backdrop-filter:blur(18px);color:#fff}
+.login-brand{text-align:center;font-weight:900;font-size:18px;letter-spacing:.5px;margin-bottom:22px}.login-brand span{color:#f9a8d4}
+.login-wrap h2{text-align:center;font-size:43px;margin-bottom:24px;color:#fff;letter-spacing:-1px}.login-field{position:relative;margin:16px 0}.login-field input{width:100%;height:58px;border:1px solid rgba(255,255,255,.35);border-radius:30px;background:rgba(91,33,182,.28);color:#fff;padding:0 54px 0 22px;outline:none;font-size:16px}.login-field input::placeholder{color:rgba(255,255,255,.85)}.login-field input:focus{border-color:#f9a8d4;box-shadow:0 0 0 4px rgba(244,114,182,.14)}.login-icon{position:absolute;right:20px;top:17px;font-size:21px}.login-options{display:flex;justify-content:space-between;align-items:center;margin:12px 5px 18px;font-size:13px}.remember{display:flex;align-items:center;gap:7px}.remember input{accent-color:#ec4899}.forgot{border:0;background:none;color:#fff;font-weight:700}.login-submit{width:100%;height:55px;border:0;border-radius:30px;background:#fff;color:#4c1d95;font-weight:900;font-size:16px;box-shadow:0 10px 25px rgba(0,0,0,.15)}.login-submit:hover{transform:translateY(-1px);background:#fdf2f8}.login-register{text-align:center;margin-top:22px;font-size:14px;color:rgba(255,255,255,.9)}.login-register button{border:0;background:none;color:#fff;font-weight:900}.login-back{text-align:center;margin-top:16px}.login-back button{border:0;background:none;color:rgba(255,255,255,.75);font-size:13px}
+@keyframes twinkle{0%,100%{opacity:.32}50%{opacity:.55}}
+
+@media(max-width:950px){.hero-grid,.two{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr 1fr}.kpi-grid{grid-template-columns:1fr 1fr}.hero h1{font-size:46px}}
+@media(max-width:620px){.nav{padding:0 4%}.navlinks button:not(.primary):not(.outline){display:none}.feature-grid,.kpi-grid{grid-template-columns:1fr}.hero,.section,.dashboard{padding-left:4%;padding-right:4%}.hero h1{font-size:38px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">🎓 BridgeSkill <span>Maharashtra</span></div>
+  <div class="navlinks">
+    <button onclick="goHome()">Home</button>
+    <button onclick="goFeatures()">Features</button>
+    <button class="btn primary" onclick="openLogin()">Login</button>
+    <button class="btn outline" onclick="openRegister()">Register</button>
+  </div>
+</nav>
+
+<main id="home">
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="badge">● SIH26135 • Smart Education</div>
+      <h1>Turn <span>Skills</span> into <span>Employment</span></h1>
+      <p class="lead">BridgeSkill Maharashtra is a prototype platform to track candidates, training outcomes, skill gaps and job opportunities — all in one place.</p>
+      <div class="actions">
+        <button class="btn primary" onclick="openRegister()">🚀 Get Started</button>
+        <button class="btn outline" onclick="openAdmin()">🏛️ Government Dashboard</button>
+      </div>
+    </div>
+    <div class="preview">
+      <div class="preview-head"><strong>📊 Platform Overview</strong><span class="live"><i class="dot"></i>Demo</span></div>
+      <div class="stats">
+        <div class="stat"><small>Candidates</small><strong id="homeCandidates">0</strong></div>
+        <div class="stat"><small>Employed</small><strong id="homeEmployed">0</strong></div>
+        <div class="stat"><small>Training Records</small><strong id="homeTraining">0</strong></div>
+        <div class="stat"><small>Employment Rate</small><strong id="homeRate">0%</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section white" id="features">
+  <div class="section-title"><h2>Everything You Need in One Platform</h2><p>Every feature below is clickable and connected to the candidate or government dashboard.</p></div>
+  <div class="feature-grid">
+    <div class="feature"><div class="iconbox">👤</div><h3>Candidate Tracking</h3><p>Create and manage a candidate profile, education, district and employment status.</p><button class="btn primary" onclick="featureOpen('profile')">Open Candidate Tracking →</button></div>
+    <div class="feature"><div class="iconbox">📊</div><h3>Skill Gap Analysis</h3><p>Compare registered skills with target levels and see exactly what needs improvement.</p><button class="btn primary" onclick="featureOpen('skills')">Analyze Skill Gaps →</button></div>
+    <div class="feature"><div class="iconbox">💼</div><h3>Job Matching</h3><p>See sample job matches based on the candidate's skills and proficiency.</p><button class="btn primary" onclick="featureOpen('jobs')">Find Jobs →</button></div>
+    <div class="feature"><div class="iconbox">🏛️</div><h3>Government Analytics</h3><p>View candidate, employment, district and skill information in an admin dashboard.</p><button class="btn dark" onclick="openAdmin()">Open Government Dashboard →</button></div>
+    <div class="feature"><div class="iconbox">🤖</div><h3>Smart Recommendations</h3><p>Prototype recommendations highlight skills that could be prioritized from the detected gaps.</p><button class="btn outline" onclick="featureOpen('skills')">View Recommendations →</button></div>
+    <div class="feature"><div class="iconbox">📄</div><h3>Training Records</h3><p>Add training programs and mark them completed or ongoing for each candidate.</p><button class="btn primary" onclick="featureOpen('training')">Open Training →</button></div>
+  </div>
+</section>
+</main>
+
+<main id="dashboard" class="dashboard hidden">
+  <div class="dash-head">
+    <div><div class="badge">CANDIDATE PORTAL</div><h2 id="welcome">Welcome!</h2><p class="sub">Manage your profile, skills, training and job opportunities.</p></div>
+    <button class="btn outline" onclick="logout()">Logout</button>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="candidateTab('overview',this)">Overview</button>
+    <button class="tab" onclick="candidateTab('profile',this)">👤 Profile</button>
+    <button class="tab" onclick="candidateTab('skills',this)">📊 Skills & Gaps</button>
+    <button class="tab" onclick="candidateTab('training',this)">📄 Training</button>
+    <button class="tab" onclick="candidateTab('jobs',this)">💼 Jobs</button>
+  </div>
+  <div id="candidateContent"></div>
+</main>
+
+<main id="admin" class="dashboard hidden">
+  <div class="dash-head">
+    <div><div class="badge">GOVERNMENT PORTAL</div><h2>Skill Development Analytics</h2><p class="sub">Local prototype dashboard using the candidate records saved in this browser.</p></div>
+    <button class="btn outline" onclick="goHome()">← Website</button>
+  </div>
+  <div id="adminContent"></div>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-top"><h2 id="modalTitle">Login</h2><button class="close" onclick="closeModal()">×</button></div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<div id="toast" class="toast hidden"></div>
+<footer>© 2026 BridgeSkill Maharashtra • SIH26135 • Smart Education Prototype</footer>
+
+<script>
+const KEY="bridgeskill_users_v7";
+const OLD_KEY="skilltrack_v3_users";
+const TARGETS={
+ SQL:80,"Power BI":75,Communication:70,Projects:70,Python:80,Excel:75,JavaScript:75,HTML:75,
+ CSS:70,Git:60,Flask:65,"Machine Learning":70,
+ Photography:70,"Video Editing":70,Videography:70,"Adobe Premiere Pro":65,
+ "Adobe Photoshop":65,"Adobe Lightroom":60,"Graphic Design":70,"UI/UX Design":70,
+ "Digital Marketing":70,"Social Media Marketing":70,"Content Writing":70,
+ "Content Creation":70,"SEO":65,"Canva":65,Sales:70,"Customer Service":70,
+ "Event Management":65,Accounting:70,"Tally":70,"Financial Analysis":70,
+ Cybersecurity:70,"Network Security":65,"Cloud Computing":65,AWS:65,
+ "Data Analysis":75,"Data Visualization":70,Java:70,"C++":70,"C Programming":70,
+ "React":70,"Node.js":70,"Mobile App Development":70
+};
+
+const JOBS=[
+ {title:"Junior Data Analyst",company:"Tech Solutions",skills:["Python","SQL","Excel","Power BI"]},
+ {title:"Python Developer Intern",company:"Software Labs",skills:["Python","Git","Flask"]},
+ {title:"Business Analyst",company:"Consulting Group",skills:["Excel","SQL","Communication"]},
+ {title:"Web Developer",company:"Digital Works",skills:["HTML","CSS","JavaScript"]},
+ {title:"Data Science Intern",company:"AI Innovations",skills:["Python","SQL","Machine Learning"]},
+
+ {title:"Photographer",company:"Creative Studios",skills:["Photography","Adobe Lightroom","Adobe Photoshop"]},
+ {title:"Photography Assistant",company:"Media House",skills:["Photography","Communication","Photo Editing"]},
+ {title:"Videographer",company:"Visual Media Co.",skills:["Videography","Video Editing","Photography"]},
+ {title:"Video Editor",company:"Digital Media Studio",skills:["Video Editing","Adobe Premiere Pro","Content Creation"]},
+ {title:"Social Media Content Creator",company:"BrandWorks",skills:["Content Creation","Photography","Video Editing","Social Media Marketing"]},
+ {title:"Graphic Designer",company:"Creative Pixel",skills:["Graphic Design","Canva","Adobe Photoshop"]},
+ {title:"UI/UX Designer Intern",company:"Product Labs",skills:["UI/UX Design","Graphic Design","Communication"]},
+ {title:"Digital Marketing Executive",company:"Growth Agency",skills:["Digital Marketing","SEO","Social Media Marketing","Communication"]},
+ {title:"Content Writer",company:"Media & Communications",skills:["Content Writing","SEO","Communication"]},
+ {title:"Social Media Executive",company:"Brand Studio",skills:["Social Media Marketing","Content Creation","Communication"]},
+ {title:"Event Photographer",company:"Events Maharashtra",skills:["Photography","Videography","Communication"]},
+ {title:"Event Videographer",company:"Events Maharashtra",skills:["Videography","Video Editing","Event Management"]},
+
+ {title:"Cybersecurity Intern",company:"SecureNet",skills:["Cybersecurity","Network Security"]},
+ {title:"Cloud Support Associate",company:"CloudWorks",skills:["Cloud Computing","AWS","Communication"]},
+ {title:"Java Developer Intern",company:"Enterprise Apps",skills:["Java","SQL","Git"]},
+ {title:"React Developer Intern",company:"Web Products",skills:["React","JavaScript","HTML","CSS"]},
+ {title:"Mobile App Developer Intern",company:"AppWorks",skills:["Mobile App Development","Java","Communication"]},
+ {title:"Account Assistant",company:"Finance Services",skills:["Accounting","Excel","Tally"]},
+ {title:"Sales Executive",company:"Business Solutions",skills:["Sales","Communication","Customer Service"]},
+ {title:"Customer Support Executive",company:"Service Hub",skills:["Customer Service","Communication"]},
+ {title:"Data Visualization Intern",company:"Insight Analytics",skills:["Data Analysis","Data Visualization","Excel"]},
+ {title:"Content & Media Intern",company:"Digital Creators",skills:["Content Creation","Photography","Video Editing","Content Writing"]}
+];
+function getUsers(){
+  try{
+    let raw=localStorage.getItem(KEY);
+    if(!raw){raw=localStorage.getItem(OLD_KEY); if(raw){localStorage.setItem(KEY,raw)}}
+    return JSON.parse(raw||"[]");
+  }catch(e){console.warn("BridgeSkill storage unavailable",e);return[]}
+}
+function saveUsers(x){
+  try{localStorage.setItem(KEY,JSON.stringify(x));return true}
+  catch(e){toast("Browser storage is blocked. Please allow site data for BridgeSkill.");return false}
+}
+function current(){return getUsers().find(x=>String(x.id)===sessionStorage.getItem("skilltrack_v3_user"))}
+function toast(msg){const e=document.getElementById("toast");e.textContent=msg;e.classList.remove("hidden");setTimeout(()=>e.classList.add("hidden"),2200)}
+function openModal(title,body){modalTitle.textContent=title;modalBody.innerHTML=body;modal.classList.remove("hidden")}
+function closeModal(){modal.classList.add("hidden");modal.classList.remove("login-screen")}
+function openRegister(){openModal("Create Candidate Profile",`
+<form onsubmit="register(event)">
+<div class="form-group"><label>Full Name *</label><input class="control" id="rName" required placeholder="Your full name"></div>
+<div class="form-group"><label>Username *</label><input class="control" id="rUser" required minlength="3" autocomplete="username" placeholder="Choose a username"></div>
+<div class="form-group"><label>Email *</label><input class="control" id="rEmail" type="email" required placeholder="name@example.com"></div>
+<div class="form-group"><label>Password *</label><input class="control" id="rPass" type="password" required placeholder="Create a password"></div>
+<div class="form-group"><label>Education</label><input class="control" id="rEdu" placeholder="e.g. BCA"></div>
+<div class="form-group"><label>District</label><select class="control" id="rDistrict"><option>Pune</option><option>Mumbai</option><option>Nashik</option><option>Nagpur</option><option>Kolhapur</option><option>Chhatrapati Sambhajinagar</option><option>Other</option></select></div>
+<div class="notice" style="margin:10px 0">Your username, email and password are saved in this browser so you can log in again later.</div><button class="btn primary" style="width:100%">Create Account</button>
+</form>`)}
+function register(e){
+ e.preventDefault();
+ let us=getUsers(),email=rEmail.value.trim().toLowerCase(),username=rUser.value.trim().toLowerCase(),name=rName.value.trim();
+ if(us.some(u=>u.email===email)){toast("This email is already registered");return}
+ if(us.some(u=>u.username===username)){toast("This username is already taken");return}
+ let u={id:Date.now()+Math.floor(Math.random()*1000),name,username,email,password:rPass.value,education:rEdu.value.trim(),district:rDistrict.value,status:"Seeking Job",skills:[],training:[]};
+ us.push(u);
+ if(!saveUsers(us))return;
+ sessionStorage.setItem("skilltrack_v3_user",String(u.id));
+ localStorage.setItem("bridgeSkillLastAccount",JSON.stringify({username,email}));
+ closeModal();showDashboard();toast("Account created successfully — your login is saved in this browser");
+}
+function openLogin(){
+  modal.classList.add("login-screen");
+  modalTitle.textContent="";
+  modalBody.innerHTML=`
+  <div class="login-wrap">
+    <div class="login-brand">🌉 <span>BridgeSkill</span> Maharashtra</div>
+    <h2>Login</h2>
+    <form onsubmit="login(event)">
+      <div class="login-field"><input id="lEmail" required placeholder="Username or Email" autocomplete="username"><span class="login-icon">👤</span></div>
+      <div class="login-field"><input id="lPass" type="password" required placeholder="Password" autocomplete="current-password"><span class="login-icon">🔒</span></div>
+      <div class="login-options">
+        <label class="remember"><input id="rememberMe" type="checkbox"> Remember me</label>
+        <button class="forgot" type="button" onclick="toast('For this prototype, use the password you registered with.')">Forgot password?</button>
+      </div>
+      <button class="login-submit" type="submit">Login</button>
+    </form>
+    <div class="login-register">Don't have an account? <button type="button" onclick="closeModal();openRegister()">Register</button></div>
+    <div class="login-back"><button type="button" onclick="closeModal()">← Back to BridgeSkill</button></div>
+  </div>`;
+  modal.classList.remove("hidden");
+  try{
+    const remembered=localStorage.getItem("bridgeSkillRemember")||"";
+    const last=JSON.parse(localStorage.getItem("bridgeSkillLastAccount")||"null");
+    if(remembered)document.getElementById("lEmail").value=remembered;
+    else if(last)document.getElementById("lEmail").value=last.username||last.email||"";
+  }catch(e){}
+}
+function login(e){
+  e.preventDefault();
+  const identity=document.getElementById("lEmail").value.trim().toLowerCase();
+  const password=document.getElementById("lPass").value;
+  const users=getUsers();
+  const u=users.find(x=>(x.email===identity || (x.username||"").toLowerCase()===identity || (x.name||"").toLowerCase()===identity) && x.password===password);
+  if(!u){toast("Incorrect username/email or password");return}
+  sessionStorage.setItem("skilltrack_v3_user",String(u.id));
+  localStorage.setItem("bridgeSkillLastAccount",JSON.stringify({username:u.username||"",email:u.email}));
+  if(document.getElementById("rememberMe").checked)localStorage.setItem("bridgeSkillRemember",identity);
+  closeModal();showDashboard();toast("Welcome back, "+u.name+"!");
+}
+function goHome(){home.classList.remove("hidden");dashboard.classList.add("hidden");admin.classList.add("hidden");updateHomeStats();window.scrollTo(0,0)}
+function goFeatures(){goHome();setTimeout(()=>features.scrollIntoView({behavior:"smooth"}),50)}
+function showDashboard(){home.classList.add("hidden");admin.classList.add("hidden");dashboard.classList.remove("hidden");renderCandidate("overview")}
+function logout(){sessionStorage.removeItem("skilltrack_v3_user");goHome();toast("Logged out")}
+function featureOpen(tab){if(!current()){openRegister();return}showDashboard();setTimeout(()=>renderCandidate(tab),0);setTimeout(()=>{document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.textContent.toLowerCase().includes(tab==="skills"?"skills":tab==="training"?"training":tab==="jobs"?"jobs":"overview")))},0)}
+function candidateTab(tab,el){document.querySelectorAll("#dashboard .tab").forEach(b=>b.classList.remove("active"));el.classList.add("active");renderCandidate(tab)}
+function updateUser(fn){let us=getUsers(),id=sessionStorage.getItem("skilltrack_v3_user"),i=us.findIndex(u=>String(u.id)===id);if(i<0){openRegister();return}fn(us[i]);saveUsers(us);renderCandidate("skills")}
+function renderCandidate(tab){
+ let u=current();if(!u){goHome();return}
+ welcome.textContent="Welcome, "+u.name+" 👋";
+ const skills=u.skills||[],training=u.training||[];
+ if(tab==="overview")candidateContent.innerHTML=`
+ <div class="kpi-grid"><div class="kpi"><small>My Skills</small><strong>${skills.length}</strong></div><div class="kpi"><small>Training Records</small><strong>${training.length}</strong></div><div class="kpi"><small>Job Matches</small><strong>${matchJobs(u).length}</strong></div><div class="kpi"><small>Employment</small><strong style="font-size:17px">${esc(u.status)}</strong></div></div>
+ <div class="two"><div class="panel"><h3>Profile Snapshot</h3><p class="sub">Your current candidate information.</p><p><b>Education:</b> ${esc(u.education||"Not added")}</p><p style="margin-top:8px"><b>District:</b> ${esc(u.district||"Not added")}</p><p style="margin-top:8px"><b>Email:</b> ${esc(u.email)}</p></div>
+ <div class="panel"><h3>Top Skill Gaps</h3><p class="sub">Skills to prioritize based on target levels.</p>${gapHTML(u).slice(0,900)}</div></div>
+ <div class="panel"><h3>Recommended Jobs</h3><p class="sub">Simple prototype matching based on your registered skills.</p>${jobsHTML(matchJobs(u).slice(0,3))}</div>`;
+ if(tab==="profile")candidateContent.innerHTML=`<div class="panel"><h3>👤 My Profile</h3><p class="sub">Update your details anytime.</p><form onsubmit="saveProfile(event)" class="two"><div><div class="form-group"><label>Full Name</label><input class="control" id="pName" value="${esc(u.name)}"></div><div class="form-group"><label>Education</label><input class="control" id="pEdu" value="${esc(u.education||"")}"></div><div class="form-group"><label>District</label><input class="control" id="pDistrict" value="${esc(u.district||"")}"></div></div><div><div class="form-group"><label>Employment Status</label><select class="control" id="pStatus"><option ${u.status==="Seeking Job"?"selected":""}>Seeking Job</option><option ${u.status==="Employed"?"selected":""}>Employed</option><option ${u.status==="Self Employed"?"selected":""}>Self Employed</option></select></div><button class="btn primary">Save Changes</button></div></form></div>`;
+ if(tab==="skills")candidateContent.innerHTML=skillsPage(u);
+ if(tab==="training")candidateContent.innerHTML=trainingPage(u);
+ if(tab==="jobs")candidateContent.innerHTML=`<div class="panel"><h3>💼 Job Matches</h3><p class="sub">Matches update automatically for technical, creative, business and media skills.</p>${jobsHTML(matchJobs(u))}</div>`;
+}
+function skillsPage(u){
+ let skills=u.skills||[];
+ return `<div class="two">
+ <div class="panel"><h3>📊 My Skills</h3><p class="sub">Add a skill, choose your proficiency, then click <b>Add Skill</b>. You can edit or delete skills later.</p>
+ <form onsubmit="addSkill(event)" id="skillForm">
+ <div class="form-group"><label>Skill Name *</label><input class="control" id="sName" list="skillList" placeholder="e.g. SQL" required><datalist id="skillList">${Object.keys(TARGETS).map(s=>`<option value="${s}">`).join("")}</datalist></div>
+ <div class="form-group"><label>Proficiency: <span id="levelValue">50%</span></label><input class="control" id="sLevel" type="range" min="0" max="100" value="50" oninput="levelValue.textContent=this.value+'%'"></div>
+ <button class="btn primary" type="submit">➕ Add Skill</button></form><div class="notice" style="margin-top:12px">You are not limited to Python, JavaScript or Excel. Try <b>Photography</b>, <b>Videography</b>, <b>Video Editing</b>, <b>Graphic Design</b>, <b>Digital Marketing</b>, <b>Cybersecurity</b> or any other skill.</div>
+ <div style="margin-top:22px">${skills.length?skills.map((s,i)=>skillCard(s,i)).join(""):`<div class="empty">No skills yet.<br>Add your first skill above.</div>`}</div></div>
+ <div class="panel"><h3>🎯 Skill Gap Analysis</h3><p class="sub">The demo compares your skill level with a target level.</p>${gapHTML(u)}<div class="recommend"><b>💡 Personalized Recommendations from Your Skill Guide</b><p style="margin-top:6px;color:#64748b">${recommendation(u)}</p></div></div>
+ </div>`;
+}
+function skillCard(s,i){return `<div class="skill-row"><div class="skill-line"><span><b>${esc(s.name)}</b></span><span><b>${s.level}%</b> <span class="skill-actions"><button class="mini" onclick="editSkill(${i})">Edit</button><button class="mini delete" onclick="deleteSkill(${i})">Delete</button></span></span></div><div class="progress"><div class="bar" style="width:${Math.max(0,Math.min(100,s.level))}%"></div></div></div>`}
+function addSkill(e){e.preventDefault();let name=sName.value.trim().replace(/\s+/g," ");let level=Number(sLevel.value);if(!name){toast("Enter a skill name");return}if(!Number.isFinite(level)||level<0||level>100){toast("Choose a valid proficiency");return}let us=getUsers(),id=sessionStorage.getItem("skilltrack_v3_user"),i=us.findIndex(u=>String(u.id)===id);if(i<0){toast("Please login again");return}let existing=us[i].skills.findIndex(s=>s.name.toLowerCase()===name.toLowerCase());if(existing>=0){us[i].skills[existing].level=level;toast(name+" updated");}else{us[i].skills.push({name,level});toast(name+" added successfully")}saveUsers(us);renderCandidate("skills")}
+function editSkill(i){let u=current(),s=u.skills[i];let newName=prompt("Skill name:",s.name);if(newName===null)return;newName=newName.trim();if(!newName){toast("Skill name cannot be empty");return}let lv=prompt("Proficiency (0-100):",s.level);if(lv===null)return;lv=Number(lv);if(!Number.isFinite(lv)||lv<0||lv>100){toast("Enter a number from 0 to 100");return}updateUser(x=>{x.skills[i]={name:newName,level:lv}});toast("Skill updated")}
+function deleteSkill(i){let u=current();if(!confirm("Delete "+u.skills[i].name+"?"))return;updateUser(x=>x.skills.splice(i,1));toast("Skill deleted")}
+function gapHTML(u){
+ let m={};(u.skills||[]).forEach(s=>m[s.name.toLowerCase()]=Number(s.level));
+ let keys=new Set(Object.keys(TARGETS));
+ (u.skills||[]).forEach(s=>keys.add(s.name));
+ let rows=[...keys].map(s=>[s,TARGETS[s]||60]).filter(([s])=>m[s.toLowerCase()]!==undefined || Object.prototype.hasOwnProperty.call(TARGETS,s));
+ rows.sort((a,b)=>(b[1]-(m[b[0].toLowerCase()]||0))-(a[1]-(m[a[0].toLowerCase()]||0)));
+ return rows.slice(0,12).map(([s,target])=>{
+   let val=m[s.toLowerCase()]||0,gap=Math.max(target-val,0);
+   return `<div class="skill-row"><div class="skill-line"><span><b>${esc(s)}</b> <small style="color:#94a3b8">Target ${target}%</small></span><b style="color:${gap?'#dc2626':'#16a34a'}">${gap?gap+"% gap":"Ready"}</b></div><div class="progress"><div class="bar" style="width:${Math.min(val,100)}%"></div></div></div>`;
+ }).join("") || `<div class="empty">Add skills to see your personalized skill-gap analysis.</div>`;
+}
+const USER_SKILL_RECOMMENDATIONS = {"python": {"skill": "Python", "improve": "SQL, OOP, Git/GitHub, APIs, DSA, Flask/Django", "practice": "Build automation tools, APIs, calculators, web apps, data projects.", "job": "Create 3–5 projects, upload them to GitHub, build a portfolio, practice Python interview questions, apply for internships/junior roles."}, "java": {"skill": "Java", "improve": "OOP, SQL, Spring Boot, Git, DSA", "practice": "Build CRUD applications, REST APIs and small backend projects.", "job": "Create 2–4 Java projects and prepare common Java/OOP/SQL interview questions."}, "javascript": {"skill": "JavaScript", "improve": "DOM, APIs, async JavaScript, Git, React", "practice": "Build calculators, to-do apps, weather apps and interactive websites.", "job": "Deploy projects online and show live demos in your portfolio."}, "c / c++": {"skill": "C / C++", "improve": "DSA, pointers, OOP, memory management, Git", "practice": "Implement arrays, linked lists, stacks, queues and sorting algorithms.", "job": "Build strong programming fundamentals and practice coding problems regularly."}, "html & css": {"skill": "HTML & CSS", "improve": "JavaScript, responsive design, accessibility, UI/UX basics", "practice": "Build landing pages, portfolios and responsive websites.", "job": "Have 3–5 deployed websites and put the live links on your resume."}, "react.js": {"skill": "React.js", "improve": "JavaScript, APIs, state management, routing, Git", "practice": "Build dashboards, e-commerce interfaces and API-based applications.", "job": "Create 2–3 polished React projects and deploy them."}, "node.js": {"skill": "Node.js", "improve": "Express.js, REST APIs, databases, authentication, Git", "practice": "Build backend APIs and full-stack applications.", "job": "Build at least one complete full-stack project."}, "sql": {"skill": "SQL", "improve": "Joins, subqueries, indexes, normalization, database design", "practice": "Solve SQL queries and build databases for projects.", "job": "Practice SQL interview questions and combine SQL with Python/data skills."}, "git & github": {"skill": "Git & GitHub", "improve": "Branching, merging, pull requests, issues, Git workflows", "practice": "Put every serious project on GitHub.", "job": "Keep repositories organized with README files, screenshots and project descriptions."}, "data structures & algorithms": {"skill": "Data Structures & Algorithms", "improve": "Arrays, linked lists, stacks, queues, trees, graphs, recursion", "practice": "Solve coding problems consistently.", "job": "Focus on understanding patterns rather than memorizing solutions."}, "ai & machine learning": {"skill": "AI & Machine Learning", "improve": "Python, statistics, NumPy, Pandas, scikit-learn, deep learning", "practice": "Build prediction, classification and recommendation projects.", "job": "Build a small ML portfolio and explain your projects clearly."}, "data science": {"skill": "Data Science", "improve": "Python, SQL, statistics, Pandas, visualization, machine learning", "practice": "Analyze real datasets and create dashboards/reports.", "job": "Create 3–4 data projects showing the complete process from data cleaning to insights."}, "cybersecurity": {"skill": "Cybersecurity", "improve": "Networking, Linux, Python, security fundamentals, ethical hacking concepts", "practice": "Use legal cybersecurity labs and capture-the-flag environments.", "job": "Build security knowledge, document lab projects and consider relevant certifications."}, "cloud computing": {"skill": "Cloud Computing", "improve": "Linux, networking, Docker, one major cloud platform, security basics", "practice": "Deploy applications and experiment with cloud services.", "job": "Build cloud projects and document architecture and deployment steps."}, "devops": {"skill": "DevOps", "improve": "Linux, Git, Docker, CI/CD, cloud, Kubernetes", "practice": "Create automated build/deployment pipelines.", "job": "Build one complete CI/CD project and document it on GitHub."}, "graphic design": {"skill": "Graphic Design", "improve": "Photoshop, Illustrator, branding, typography", "practice": "Create logos, posters and social-media designs.", "job": "Build a niche portfolio instead of showing random designs."}, "ui/ux design": {"skill": "UI/UX Design", "improve": "Figma, UX research, prototyping, design systems", "practice": "Create complete app/website case studies.", "job": "Show your design process and reasoning, not just screenshots."}, "photography": {"skill": "Photography", "improve": "Editing, lighting, composition, videography", "practice": "Build themed photography projects.", "job": "Create a portfolio and approach local businesses, events and creators."}, "videography": {"skill": "Videography", "improve": "Camera techniques, lighting, audio, storytelling, video editing", "practice": "Shoot short films, reels, product videos and interviews.", "job": "Create a short showreel containing your strongest work."}, "video editing": {"skill": "Video Editing", "improve": "Premiere Pro, After Effects, storytelling, sound design", "practice": "Create reels, YouTube edits and advertisements.", "job": "Create a showreel and approach creators/businesses with relevant samples."}, "photo editing": {"skill": "Photo Editing", "improve": "Photoshop, Lightroom, retouching, color correction", "practice": "Edit portraits, products and landscapes.", "job": "Show before/after work in your portfolio."}, "motion graphics": {"skill": "Motion Graphics", "improve": "After Effects, typography animation, compositing, storytelling", "practice": "Create logo animations, advertisements and social-media animations.", "job": "Build a 30–60 second motion-design reel."}, "3d modeling": {"skill": "3D Modeling", "improve": "Blender, texturing, lighting, rendering, animation", "practice": "Model everyday objects, rooms and simple characters.", "job": "Create a portfolio around one area such as product, environment or character modeling."}, "animation": {"skill": "Animation", "improve": "Storyboarding, timing, character design, motion principles", "practice": "Create short animations and motion exercises.", "job": "Build a demo reel showing your strongest animations."}, "photoshop": {"skill": "Photoshop", "improve": "Retouching, compositing, typography, color correction", "practice": "Posters, thumbnails, photo manipulation and advertisements.", "job": "Show practical commercial-style designs in your portfolio."}, "illustrator": {"skill": "Illustrator", "improve": "Vector illustration, logos, typography, branding", "practice": "Create logos, icons, illustrations and brand assets.", "job": "Build a branding/illustration portfolio."}, "premiere pro": {"skill": "Premiere Pro", "improve": "Color correction, audio editing, transitions, storytelling", "practice": "Edit reels, YouTube videos and promotional videos.", "job": "Create a showreel and several complete sample projects."}, "after effects": {"skill": "After Effects", "improve": "Motion graphics, compositing, VFX, expressions", "practice": "Logo animations, titles, transitions and visual effects.", "job": "Build a focused motion/VFX reel."}, "canva": {"skill": "Canva", "improve": "Design principles, typography, branding, Photoshop/Illustrator", "practice": "Social posts, presentations, thumbnails and marketing materials.", "job": "Use Canva to create a consistent portfolio, but also learn professional design fundamentals."}, "digital marketing": {"skill": "Digital Marketing", "improve": "SEO, social media, analytics, paid advertising", "practice": "Build mock campaigns and analyze results.", "job": "Create case studies and demonstrate measurable outcomes."}, "social media marketing": {"skill": "Social Media Marketing", "improve": "Content strategy, analytics, copywriting, advertising", "practice": "Manage a test account or create a content calendar.", "job": "Show sample campaigns and measurable results where available."}, "seo": {"skill": "SEO", "improve": "Keyword research, on-page SEO, technical SEO, analytics", "practice": "Optimize a website or blog you control.", "job": "Create an SEO case study showing what you changed and what happened."}, "content creation": {"skill": "Content Creation", "improve": "Video editing, photography, storytelling, copywriting, social media", "practice": "Publish consistently and experiment with different formats.", "job": "Build a recognizable portfolio and track engagement/results."}, "copywriting": {"skill": "Copywriting", "improve": "SEO, advertising, storytelling, sales psychology", "practice": "Write landing pages, advertisements and emails.", "job": "Create 5–10 strong samples across different industries."}, "email marketing": {"skill": "Email Marketing", "improve": "Copywriting, segmentation, analytics, automation", "practice": "Create sample email campaigns and sequences.", "job": "Build case studies using test campaigns or legitimate projects."}, "e-commerce": {"skill": "E-commerce", "improve": "Digital marketing, SEO, product research, analytics, customer service", "practice": "Build a demo online store.", "job": "Learn how product pages, conversion and customer acquisition work."}, "sales": {"skill": "Sales", "improve": "Communication, negotiation, CRM, product knowledge", "practice": "Role-play sales calls and presentations.", "job": "Prepare examples showing communication, persuasion and results."}, "branding": {"skill": "Branding", "improve": "Graphic design, marketing, consumer research, storytelling", "practice": "Create complete fictional brand identities.", "job": "Build case studies showing brand strategy + visual identity."}, "market research": {"skill": "Market Research", "improve": "Data analysis, surveys, statistics, Excel/Sheets, presentation", "practice": "Research a market and create a report.", "job": "Build 2–3 research case studies."}, "entrepreneurship": {"skill": "Entrepreneurship", "improve": "Marketing, sales, finance, communication, leadership", "practice": "Build a small project/business idea and test it.", "job": "Document what you built, what you learned and the results."}, "communication": {"skill": "Communication", "improve": "Writing, speaking, listening, professional communication", "practice": "Explain your projects aloud and practice conversations.", "job": "Prepare a clear 30-second introduction about yourself."}, "public speaking": {"skill": "Public Speaking", "improve": "Confidence, storytelling, presentation structure", "practice": "Record yourself giving 2–5 minute presentations.", "job": "Practice explaining your projects clearly."}, "leadership": {"skill": "Leadership", "improve": "Delegation, decision-making, conflict management", "practice": "Lead a college/project team.", "job": "Keep examples of situations where you coordinated people or completed projects."}, "teamwork": {"skill": "Teamwork", "improve": "Collaboration, communication, conflict resolution", "practice": "Work on group projects and GitHub collaborations.", "job": "Prepare examples of how you contributed to team projects."}, "problem solving": {"skill": "Problem Solving", "improve": "Logical thinking, analysis, decision-making", "practice": "Coding challenges, case studies and real-world problems.", "job": "Practice explaining **how** you solved a problem, not just the final answer."}, "critical thinking": {"skill": "Critical Thinking", "improve": "Research, analysis, questioning assumptions", "practice": "Compare different solutions to the same problem.", "job": "Use structured reasoning during interviews."}, "time management": {"skill": "Time Management", "improve": "Planning, prioritization, consistency", "practice": "Use weekly goals and project deadlines.", "job": "Show that you can complete projects on schedule."}, "negotiation": {"skill": "Negotiation", "improve": "Communication, persuasion, research", "practice": "Role-play salary/client negotiations.", "job": "Research market rates and prepare your reasoning before discussions."}, "presentation skills": {"skill": "Presentation Skills", "improve": "Storytelling, slide design, speaking", "practice": "Present your projects regularly.", "job": "Add project presentations/case studies to your portfolio."}, "networking": {"skill": "Networking", "improve": "Communication, personal branding, relationship building", "practice": "Connect with professionals, attend events and participate in communities.", "job": "Don't only ask people for jobs—build genuine professional relationships."}, "web development": {"skill": "Web Development", "improve": "JavaScript, React, backend, databases, Git", "practice": "Build websites for fictional businesses.", "job": "Create 3–5 demos and contact small businesses/startups with a clear portfolio."}, "social media management": {"skill": "Social Media Management", "improve": "Content creation, analytics, copywriting, design", "practice": "Create sample content calendars and campaigns.", "job": "Show businesses exactly what you could improve rather than sending only a generic message."}, "virtual assistance": {"skill": "Virtual Assistance", "improve": "Excel/Sheets, email management, organization, communication", "practice": "Create sample schedules, spreadsheets and administrative workflows.", "job": "Demonstrate reliability, organization and specific services you can provide."}, "wordpress development": {"skill": "WordPress Development", "improve": "HTML, CSS, JavaScript, SEO, hosting", "practice": "Build business websites and blogs.", "job": "Create several demo websites for different types of businesses."}};
+function recommendation(u){
+ let selected=(u.skills||[]).map(s=>s.name.trim());
+ if(!selected.length) return "Add your career skills to get personalized practice, improvement and job-preparation recommendations.";
+
+ let tips=[];
+ selected.forEach(name=>{
+   let key=name.toLowerCase();
+   let r=USER_SKILL_RECOMMENDATIONS[key];
+   if(!r){
+     // Flexible matching for common variations such as "C++ programming", "Video Editing Software", etc.
+     let matchKey=Object.keys(USER_SKILL_RECOMMENDATIONS).find(k=>key.includes(k)||k.includes(key));
+     if(matchKey) r=USER_SKILL_RECOMMENDATIONS[matchKey];
+   }
+   if(r){
+     tips.push(`<div style="margin-bottom:14px"><b>🎯 ${esc(r.skill)}</b>`+
+       (r.improve?`<br><span><b>Improve next:</b> ${esc(r.improve)}</span>`:"")+
+       (r.practice?`<br><span><b>Practice:</b> ${esc(r.practice)}</span>`:"")+
+       (r.job?`<br><span><b>Job preparation:</b> ${esc(r.job)}</span>`:"")+
+       `</div>`);
+   } else {
+     tips.push(`<div style="margin-bottom:14px"><b>🎯 ${esc(name)}</b><br><span><b>Practice:</b> Build 2–3 practical projects and add the best work to your portfolio.</span><br><span><b>Job preparation:</b> Create skill-specific samples and prepare common interview questions.</span></div>`);
+   }
+ });
+ return tips.slice(0,4).join("");
+}
+function trainingPage(u){let t=u.training||[];return `<div class="panel"><h3>📄 Training History</h3><p class="sub">Add courses and track whether they are ongoing or completed.</p><div class="list">${t.length?t.map(x=>`<div class="list-item"><div><b>${esc(x.name)}</b><small>${esc(x.provider||"Provider not added")}</small></div><span class="tag ${x.status==="Completed"?"success":"warning"}">${x.status}</span></div>`).join(""):"<div class='empty'>No training records yet.</div>"}</div><hr style="margin:20px 0;border:0;border-top:1px solid #e2e8f0"><form onsubmit="addTraining(event)" class="two"><div><div class="form-group"><label>Training Name *</label><input class="control" id="tName" required placeholder="Python & Data Analytics"></div><div class="form-group"><label>Provider</label><input class="control" id="tProvider" placeholder="Institute / organization"></div></div><div><div class="form-group"><label>Status</label><select class="control" id="tStatus"><option>Completed</option><option>Ongoing</option></select></div><button class="btn primary">Add Training</button></div></form></div>`}
+function addTraining(e){e.preventDefault();updateUser(u=>u.training.push({name:tName.value.trim(),provider:tProvider.value.trim(),status:tStatus.value}));toast("Training added")}
+function saveProfile(e){e.preventDefault();updateUser(u=>{u.name=pName.value.trim();u.education=pEdu.value.trim();u.district=pDistrict.value.trim();u.status=pStatus.value});toast("Profile updated")}
+function skillMap(u){let m={};(u.skills||[]).forEach(s=>m[s.name.toLowerCase()]=Number(s.level));return m}
+function normalizeSkill(s){
+ return s.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g," ").trim();
+}
+const SKILL_ALIASES={
+ "editing":"video editing","video editor":"video editing","video editing":"video editing",
+ "photo editing":"adobe photoshop","photo editing software":"adobe photoshop",
+ "photography":"photography","videography":"videography",
+ "photoshop":"adobe photoshop","lightroom":"adobe lightroom",
+ "graphic designing":"graphic design","graphic designing":"graphic design",
+ "ui ux":"ui ux design","ui/ux":"ui ux design","digital marketing":"digital marketing",
+ "social media":"social media marketing","content creator":"content creation",
+ "content creation":"content creation","seo":"seo","excel":"excel",
+ "data analytics":"data analysis","data analyst":"data analysis"
+};
+function getSkillLevel(map, required){
+ let key=normalizeSkill(required);
+ if(map[key]!==undefined) return map[key];
+ let alias=SKILL_ALIASES[key];
+ if(alias && map[normalizeSkill(alias)]!==undefined) return map[normalizeSkill(alias)];
+ for(let userKey in map){
+   if(userKey.includes(key)||key.includes(userKey)) return map[userKey];
+ }
+ return 0;
+}
+function matchJobs(u){
+ let raw=u.skills||[],m={};
+ raw.forEach(s=>m[normalizeSkill(s.name)]=Number(s.level));
+ return JOBS.map(j=>{
+   let total=0;
+   j.skills.forEach(required=>{let level=getSkillLevel(m,required); total += Math.min(level,100);});
+   let score=Math.round(total/(j.skills.length*100)*100);
+   let strong=j.skills.filter(s=>getSkillLevel(m,s)>=40).length;
+   return {...j,score,strong};
+ }).filter(j=>j.score>=15 || j.strong>0).sort((a,b)=>b.score-a.score);
+}
+function jobsHTML(js){if(!js.length)return "<div class='empty'>Add any skill — including photography, videography, editing, design, marketing, cybersecurity and more — to discover related opportunities.</div>";return `<div class="list">${js.map(j=>`<div class="list-item"><div><b>${j.title}</b><small>${j.company} • Required: ${j.skills.join(", ")}</small></div><span class="tag">${j.score}% match</span></div>`).join("")}</div>`}
+function openAdmin(){home.classList.add("hidden");dashboard.classList.add("hidden");admin.classList.remove("hidden");renderAdmin();window.scrollTo(0,0)}
+function renderAdmin(){let us=getUsers(),em=us.filter(u=>u.status==="Employed").length,seek=us.filter(u=>u.status==="Seeking Job").length,tr=us.reduce((n,u)=>n+(u.training||[]).length,0),rate=us.length?Math.round(em/us.length*100):0;let dist={},skills={};us.forEach(u=>{let d=u.district||"Not specified";dist[d]??={total:0,emp:0};dist[d].total++;if(u.status==="Employed")dist[d].emp++;(u.skills||[]).forEach(s=>skills[s.name]=(skills[s.name]||0)+1)});let top=Object.entries(skills).sort((a,b)=>b[1]-a[1]);adminContent.innerHTML=`<div class="notice">Prototype note: this dashboard reads records saved in this browser. A production version would use a secure shared database and authenticated government access.</div><div class="kpi-grid"><div class="kpi"><small>Total Candidates</small><strong>${us.length}</strong></div><div class="kpi"><small>Employed</small><strong>${em}</strong></div><div class="kpi"><small>Seeking Job</small><strong>${seek}</strong></div><div class="kpi"><small>Employment Rate</small><strong>${rate}%</strong></div></div><div class="two"><div class="panel"><h3>District Overview</h3><p class="sub">Employment rate by registered district.</p>${Object.entries(dist).length?Object.entries(dist).map(([d,x])=>{let r=Math.round(x.emp/x.total*100);return `<div class="skill-row"><div class="skill-line"><b>${esc(d)}</b><span>${x.total} candidates • ${r}% employed</span></div><div class="progress"><div class="bar" style="width:${r}%"></div></div></div>`}).join(""):"<div class='empty'>Register candidates to populate this dashboard.</div>"}</div><div class="panel"><h3>Top Registered Skills</h3><p class="sub">Skills appearing in candidate profiles.</p>${top.length?top.map(x=>`<div class="list-item"><b>${esc(x[0])}</b><span class="tag">${x[1]} candidates</span></div>`).join(""):"<div class='empty'>No skills recorded yet.</div>"}</div></div><div class="panel"><h3>Training Outcome Summary</h3><p class="sub">Aggregate demo records.</p><div class="list"><div class="list-item"><b>Total training records</b><span class="tag">${tr}</span></div><div class="list-item"><b>Total candidates</b><span class="tag">${us.length}</span></div><div class="list-item"><b>Employment rate</b><span class="tag success">${rate}%</span></div></div></div>`}
+function updateHomeStats(){let us=getUsers(),em=us.filter(u=>u.status==="Employed").length,tr=us.reduce((n,u)=>n+(u.training||[]).length,0);homeCandidates.textContent=us.length;homeEmployed.textContent=em;homeTraining.textContent=tr;homeRate.textContent=(us.length?Math.round(em/us.length*100):0)+"%"}
+function esc(x){return String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function init(){updateHomeStats();if(current())showDashboard()}
+init();
+</script>
+</body>
+</html>
